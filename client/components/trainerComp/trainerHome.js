@@ -12,13 +12,16 @@ class TrainerHome extends Component {
       <div>
         <h3 className="headers">Welcome, bro</h3>
         <div className="homeNav">
-          <ul>Profile pic</ul>
-          <ul>Your clients</ul>
+          <ul>trainer profile pic</ul>
+          <ul>Your clients:</ul>
+          {/* map through all the trainer's clients, then link to the individual client page */}
           <ul>
             <Link to="/newclient">Add new clients</Link>
-            {/* ENTER NEW CLIENT FORM HERE */}
+            {/* ENTER NEW CLIENT FORM HERE - make sure to include fields for everything on the client model */}
           </ul>
           <ul>Next training session</ul>
+          <ul>Your gym:</ul>
+          {/* link to home-gym */}
         </div>
       </div>
     )
