@@ -6,14 +6,16 @@ import {Link} from 'react-router-dom'
 /**
  * COMPONENT
  */
-class TrainerHome extends Component {
+export class TrainerHome extends Component {
   render() {
     console.log('PROPS', this.props)
     return (
       <div>
-        <h3 className="headers">Welcome, bro</h3>
+        <h3 className="headers">{`Welcome, ${this.props.name}`}</h3>
         <div className="homeNav">
-          <ul>trainer profile pic</ul>
+          <ul>
+            <img className="homeImage" src={this.props.imageUrl} />
+          </ul>
           <ul>Your clients:</ul>
           {/* map through all the trainer's clients, then link to the individual client page */}
           <ul>
@@ -34,7 +36,9 @@ class TrainerHome extends Component {
  */
 const mapState = state => {
   return {
-    email: state.user.email
+    name: state.user.name,
+    email: state.user.email,
+    imageUrl: state.user.imageUrl
   }
 }
 

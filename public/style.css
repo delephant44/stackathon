@@ -19,3 +19,13 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+img.homeImage {
+  display: block;
+  width: 50%;
+  height: 50%;
+  /* margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px; */
+}

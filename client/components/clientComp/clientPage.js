@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 
 export class ClientComp extends Component {
   render() {
+    console.log('PROPS', this.props)
     return (
       <div>
         <h3 className="headers">Client component</h3>
@@ -22,8 +23,10 @@ export class ClientComp extends Component {
 
 //CONTAINER
 
-// const mapState = function (state) {
-//     return {
+const mapState = function(state) {
+  return {
+    name: state.client.name
+  }
+}
 
-//     }
-// }
+export default connect(mapState)(ClientComp)
