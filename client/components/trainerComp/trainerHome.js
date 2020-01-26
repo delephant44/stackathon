@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
  */
 class TrainerHome extends Component {
   render() {
+    console.log('PROPS', this.props)
     return (
       <div>
         <h3 className="headers">Welcome, bro</h3>

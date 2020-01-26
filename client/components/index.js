@@ -6,4 +6,5 @@
 export {default as Navbar} from './navbar'
 export {default as TrainerHome} from './trainerComp/trainerHome'
 export {Login, Signup} from './auth-form'
-export {ClientComp} from './clientComp/clientPage'
+export {default as ClientComp} from './clientComp/clientPage'
+// export {default as AllGymsComp} from "./gymComp/gymsPage"

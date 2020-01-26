@@ -4,36 +4,48 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
-const ALL_GYMS = 'ALL_GYMS'
+const GET_ALL_GYMS = 'GET_ALL_GYMS'
 
 /**
  * INITIAL STATE`
  */
-// state = [] in reducer below
+
+const defaultGyms = {
+  gyms: []
+}
 
 /**
  * ACTION CREATORS
  */
-const allGyms = gyms => ({type: ALL_GYMS, gyms})
+const allGyms = gyms => ({
+  type: GET_ALL_GYMS,
+  receivedGyms: gyms
+})
 
 /**
  * THUNK CREATORS
  */
 
-// export const getAllGyms = async function(dispatch) {
-//   try {
-//       const {data} = await axios.get("/api/gyms");
-//       dispatch(allGyms(data))
-//   } catch (error) {}
-// }
+export const getAllGyms = async function(dispatch) {
+  console.log('getAllGyms Thunk Creator reached')
+
+  try {
+    const {data} = await axios.get('/api/gyms')
+    dispatch(allGyms(data))
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 /**
- * REDUCER
+ * REDUCER - BREAKING APP VVVV
  */
-export default function(state = [], action) {
+
+export default function(state = defaultGyms, action) {
+  console.log('Gym Reducer reached')
   switch (action.type) {
-    case All_GYMS:
-      return action.user
+    case GET_ALL_GYMS:
+      return {...state, gyms: [...state.gyms, ...action.receivedGyms]}
     default:
       return state
   }
