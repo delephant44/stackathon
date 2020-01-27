@@ -6,17 +6,22 @@ import history from '../history'
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
+const GET_CLIENTS = 'GET_CLIENTS'
 
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultUser = {
+  clients: [],
+  currentUser: {}
+}
 
 /**
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
+const getClients = clients => ({type: GET_CLIENTS, receivedClients: clients})
 
 /**
  * THUNK CREATORS
@@ -56,15 +61,40 @@ export const logout = () => async dispatch => {
   }
 }
 
+export const getAllClients = function(id) {
+  console.log('GETALLCLIENTS THUNK')
+  return async function(dispatch) {
+    try {
+      const {data} = await axios.get(`/api/users/${id}/clients`)
+      dispatch(getClients(data))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
+export const newClient = function(clientInfo) {
+  return async function(dispatch) {
+    try {
+      const {data} = await axios.post(XXXXX)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
+
 /**
  * REDUCER
  */
 export default function(state = defaultUser, action) {
+  console.log('USER REDUCER')
   switch (action.type) {
     case GET_USER:
       return action.user
     case REMOVE_USER:
       return defaultUser
+    case GET_CLIENTS:
+      return {...state, clients: [...state.clients, action.receivedClients]}
     default:
       return state
   }

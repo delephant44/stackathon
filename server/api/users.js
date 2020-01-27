@@ -15,3 +15,27 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id', async function(req, res, next) {
+  try {
+    const singleUser = await User.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.send(singleUser)
+  } catch (error) {
+    console.error(error)
+  }
+})
+
+// /api/users/${id}/clients
+
+router.get('/:id/clients', async function(req, res, next) {
+  try {
+    const allClients = await User.findAll({})
+    res.send(allClients)
+  } catch (error) {
+    console.error(error)
+  }
+})

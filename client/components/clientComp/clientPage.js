@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+// import getAllClients from "../store/client"
 
 //COMPONENT
 
@@ -28,5 +29,14 @@ const mapState = function(state) {
     name: state.client.name
   }
 }
+
+// const mapDispatch = function(dispatch) {
+//     return {
+//         loadClients: function(id) {
+//             dispatch(getAllClients(id))
+//         }
+
+//     }
+// }
 
 export default connect(mapState)(ClientComp)

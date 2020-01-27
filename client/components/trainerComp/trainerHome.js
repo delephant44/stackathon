@@ -2,11 +2,17 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import getAllClients from '../clientComp/clientPage'
 
 /**
  * COMPONENT
  */
-export class TrainerHome extends Component {
+
+class TrainerHome extends Component {
+  componentDidMount() {
+    console.log('COMPONENTDIDMOUNT')
+    // this.props.loadClients(this.props.user.id)
+  }
   render() {
     console.log('PROPS', this.props)
     return (
@@ -38,11 +44,20 @@ const mapState = state => {
   return {
     name: state.user.name,
     email: state.user.email,
-    imageUrl: state.user.imageUrl
+    imageUrl: state.user.imageUrl,
+    clients: state.user.clients
   }
 }
 
-export default connect(mapState)(TrainerHome)
+const mapDispatch = function(dispatch) {
+  return {
+    loadClients: function(id) {
+      dispatch(getAllClients(id))
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(TrainerHome)
 
 /**
  * PROP TYPES

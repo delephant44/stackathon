@@ -6,6 +6,7 @@ import {Login, Signup, TrainerHome} from './components'
 import {me} from './store'
 import {ClientComp} from './components/clientComp/clientPage'
 import {AllGymsComp} from './components/gymComp/gymsPage'
+import {NewClient} from './components/clientComp/newClientForm'
 
 /**
  * COMPONENT
@@ -30,6 +31,7 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={TrainerHome} />
             <Route exact path="/clients" component={ClientComp} />
+            <Route exact path="/newclient" component={NewClient} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
