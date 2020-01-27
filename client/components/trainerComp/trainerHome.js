@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import getAllClients from '../clientComp/clientPage'
+import {getAllClients} from '../../store/user'
 
 /**
  * COMPONENT
@@ -11,10 +11,11 @@ import getAllClients from '../clientComp/clientPage'
 class TrainerHome extends Component {
   componentDidMount() {
     console.log('COMPONENTDIDMOUNT')
-    // this.props.loadClients(this.props.user.id)
+    console.log('PROPS in mount', this.props)
+    this.props.loadClients(this.props.id)
   }
   render() {
-    console.log('PROPS', this.props)
+    console.log('this.props.clients', this.props.clients)
     return (
       <div>
         <h3 className="headers">{`Welcome, ${this.props.name}`}</h3>
@@ -23,7 +24,15 @@ class TrainerHome extends Component {
             <img className="homeImage" src={this.props.imageUrl} />
           </ul>
           <ul>Your clients:</ul>
-          {/* map through all the trainer's clients, then link to the individual client page */}
+          {this.props.clients.map(function(currentClient) {
+            return (
+              <ul key={currentClient.id}>
+                <div>
+                  <img className="clientImages" src={currentClient.imageUrl} />
+                </div>
+              </ul>
+            )
+          })}
           <ul>
             <Link to="/newclient">Add new clients</Link>
             {/* ENTER NEW CLIENT FORM HERE - make sure to include fields for everything on the client model */}
@@ -41,11 +50,13 @@ class TrainerHome extends Component {
  * CONTAINER
  */
 const mapState = state => {
+  console.log('STATE.USER', state.user)
   return {
+    id: state.user.id,
     name: state.user.name,
     email: state.user.email,
     imageUrl: state.user.imageUrl,
-    clients: state.user.clients
+    clients: state.user.clients || [] //if clients comes out undefined (the first render), then add the || [] so it will return an empty array to begin with, then it will load the clients on the second render
   }
 }
 

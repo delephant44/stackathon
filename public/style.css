@@ -1,5 +1,10 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Kanit', sans-serif;
+  color: whitesmoke;
+  background-image: url('Grey-website-background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 a {
@@ -20,7 +25,22 @@ form div {
   display: inline-block;
 }
 
-img.homeImage {
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background: pink; */
+}
+
+.headers {
+  /* background: red; */
+}
+
+.homeNav {
+  /* background: blue */
+}
+
+.homeImage {
   display: block;
   width: 50%;
   height: 50%;
@@ -28,4 +48,16 @@ img.homeImage {
   margin-right: auto;
   margin-top: 50px;
   margin-bottom: 50px; */
+}
+
+.clientImages {
+  display: block;
+  width: 25%;
+  height: 50%;
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

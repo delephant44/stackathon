@@ -36,7 +36,7 @@ export class NewClient extends Component {
     return (
       <div>
         {/* onSubmit={this.props.submitHelper()} */}
-        <form>
+        <form className="form">
           <label>Name</label>
           <input
             type="text"

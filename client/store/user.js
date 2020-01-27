@@ -94,7 +94,7 @@ export default function(state = defaultUser, action) {
     case REMOVE_USER:
       return defaultUser
     case GET_CLIENTS:
-      return {...state, clients: [...state.clients, action.receivedClients]}
+      return action.receivedClients
     default:
       return state
   }
