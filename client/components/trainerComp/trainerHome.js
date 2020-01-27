@@ -35,7 +35,6 @@ class TrainerHome extends Component {
           })}
           <ul>
             <Link to="/newclient">Add new clients</Link>
-            {/* ENTER NEW CLIENT FORM HERE - make sure to include fields for everything on the client model */}
           </ul>
           <ul>Next training session</ul>
           <ul>Your gym:</ul>
